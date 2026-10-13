@@ -1,0 +1,88 @@
+/* ==========================================================================
+   TOKENS DE DISEÑO
+   Única fuente de verdad para colores, tipografía, espaciado y radios.
+   Para cambiar la identidad visual del sitio, tocá solamente este archivo.
+   El tema oscuro es el predeterminado; [data-theme='light'] lo sobrescribe.
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* --- Color: superficies --- */
+  --bg: #0a0e14;
+  --bg-soft: #0e141c;
+  --surface: #131b25;
+  --surface-2: #1a2431;
+  --border: #243142;
+  --border-strong: #35475c;
+  --header-bg: rgba(10, 14, 20, 0.78);
+
+  /* --- Color: texto --- */
+  --text: #e9eef5;
+  --text-muted: #9ba9ba;
+  --text-faint: #71819a;
+
+  /* --- Color: acentos --- */
+  --accent: #ffb454;
+  --accent-strong: #ffc67d;
+  --accent-soft: rgba(255, 180, 84, 0.13);
+  --on-accent: #1b1204;
+  --teal: #4fd8c8;
+  --teal-soft: rgba(79, 216, 200, 0.12);
+
+  /* --- Efectos --- */
+  --glow: rgba(255, 180, 84, 0.16);
+  --grid-line: rgba(255, 255, 255, 0.045);
+  --shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.7);
+
+  /* --- Tipografía --- */
+  --font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --fs-xs: 0.78rem;
+  --fs-sm: 0.9rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-2xl: clamp(1.9rem, 1.3rem + 2.4vw, 2.9rem);
+  --fs-hero: clamp(2.75rem, 1.5rem + 5.5vw, 5.5rem);
+
+  /* --- Forma y layout --- */
+  --radius-sm: 8px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --container: 1120px;
+  --gutter: 1.25rem;
+  --header-h: 68px;
+
+  /* --- Movimiento --- */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #f7f4ed;
+  --bg-soft: #efebe1;
+  --surface: #ffffff;
+  --surface-2: #f3efe5;
+  --border: #e3ddcf;
+  --border-strong: #cdc4b0;
+  --header-bg: rgba(247, 244, 237, 0.82);
+
+  --text: #16191f;
+  --text-muted: #4d5767;
+  --text-faint: #75808f;
+
+  --accent: #b4540a;
+  --accent-strong: #8f4207;
+  --accent-soft: rgba(180, 84, 10, 0.1);
+  --on-accent: #ffffff;
+  --teal: #0b7a70;
+  --teal-soft: rgba(11, 122, 112, 0.1);
+
+  --glow: rgba(180, 84, 10, 0.12);
+  --grid-line: rgba(22, 25, 31, 0.06);
+  --shadow: 0 18px 40px -24px rgba(60, 40, 10, 0.35);
+}

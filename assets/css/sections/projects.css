@@ -1,0 +1,146 @@
+/* ==========================================================================
+   PROYECTOS
+   El proyecto con featured:true ocupa todo el ancho en escritorio.
+   ========================================================================== */
+
+.projects__grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.project__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Contexto (materia / ámbito): versión discreta de .eyebrow, sin línea decorativa */
+.project__context {
+  margin-bottom: 0.5rem;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  text-transform: none;
+  line-height: 1.5;
+}
+
+.project__context::before {
+  display: none;
+}
+
+.project__title {
+  margin-bottom: 0.6rem;
+  font-size: var(--fs-xl);
+}
+
+.project__summary {
+  color: var(--text-muted);
+}
+
+.project__points {
+  display: grid;
+  gap: 0.7rem;
+  font-size: var(--fs-sm);
+}
+
+.project__points li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--text-muted);
+}
+
+.project__points li::before {
+  content: '';
+  position: absolute;
+  top: 0.62em;
+  left: 0;
+  width: 0.55rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.project__points strong {
+  color: var(--text);
+}
+
+.project__foot {
+  display: grid;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.project__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.project__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.project__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (min-width: 640px) {
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project--featured {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 960px) {
+  .projects__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Destacado: texto a la izquierda, puntos clave a la derecha */
+  .project--featured {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    grid-template-areas:
+      'main points'
+      'foot points';
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+    row-gap: 1.5rem;
+    align-items: start;
+  }
+
+  .project--featured .project__main { grid-area: main; }
+  .project--featured .project__points { grid-area: points; align-self: center; }
+  .project--featured .project__foot { grid-area: foot; }
+
+  .project--featured .project__title {
+    font-size: var(--fs-2xl);
+  }
+
+  .project--featured .project__summary {
+    font-size: var(--fs-lg);
+  }
+
+  .project--featured .project__points {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+    font-size: var(--fs-md);
+  }
+}

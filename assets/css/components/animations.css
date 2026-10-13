@@ -1,0 +1,24 @@
+/* ==========================================================================
+   ANIMACIÓN DE ENTRADA (scroll reveal)
+   Solo se activa si JavaScript está disponible (clase .js en <html>), de modo que
+   sin JS todo el contenido es visible. Uso: <div data-reveal data-reveal-delay="120">
+   ========================================================================== */
+
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transition-delay: var(--d, 0ms);
+}
+
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,165 @@
+/* ==========================================================================
+   HEADER + NAVEGACIÓN
+   Fijo arriba; se vuelve "vidrio esmerilado" al hacer scroll (.is-scrolled).
+   En pantallas chicas el menú se despliega con el botón hamburguesa (.is-open).
+   ========================================================================== */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  height: var(--header-h);
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+}
+
+.site-header.is-scrolled,
+.site-header.is-open {
+  border-color: var(--border);
+  background: var(--header-bg);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+}
+
+.site-header__inner {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* --- Marca --- */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.brand__mark {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  transition: transform 0.3s var(--ease);
+}
+
+.brand:hover .brand__mark {
+  transform: rotate(-8deg) scale(1.06);
+}
+
+/* --- Navegación (móvil primero: panel desplegable) --- */
+.nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: none;
+  padding: 0.5rem var(--gutter) 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.site-header.is-open .nav {
+  display: block;
+}
+
+.nav__list {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.nav__link {
+  display: block;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: var(--fs-md);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.nav__link:hover,
+.nav__link[aria-current='true'] {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.nav__link[aria-current='true'] {
+  color: var(--accent);
+}
+
+/* --- Acciones de la derecha --- */
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.site-header__cta {
+  display: none;
+}
+
+/* Íconos que alternan según tema y estado del menú */
+[data-theme='dark'] .icon--moon,
+[data-theme='light'] .icon--sun {
+  display: none;
+}
+
+.nav-toggle .icon--close {
+  display: none;
+}
+
+.site-header.is-open .nav-toggle .icon--open {
+  display: none;
+}
+
+.site-header.is-open .nav-toggle .icon--close {
+  display: block;
+}
+
+/* --- Escritorio --- */
+@media (min-width: 960px) {
+  .nav {
+    position: static;
+    display: block;
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+  .nav__list {
+    display: flex;
+    gap: 0.15rem;
+  }
+
+  .nav__link {
+    padding: 0.5rem 0.85rem;
+    border-radius: 999px;
+    font-size: var(--fs-sm);
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+}
+
+/* El botón "Contactar" del header solo entra cómodo en pantallas anchas */
+@media (min-width: 1120px) {
+  .site-header__cta {
+    display: inline-flex;
+  }
+}

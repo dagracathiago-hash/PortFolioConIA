@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="es-AR" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Thiago Da Graca · Desarrollador Java Junior · Estudiante de Sistemas (UNLa)</title>
+  <meta name="description" content="Portfolio de Thiago Da Graca: desarrollador Java junior y estudiante de tercer año de Licenciatura en Sistemas en la UNLa. Proyectos, historial académico, experiencia y contacto.">
+  <meta name="author" content="Thiago Da Graca">
+  <meta name="theme-color" content="#0a0e14">
+
+  <!-- Open Graph (previsualización al compartir el link) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="Thiago Da Graca · Desarrollador Java Junior">
+  <meta property="og:description" content="Estudiante de Licenciatura en Sistemas (UNLa) con foco en Java, POO y bases de datos. Mirá mis proyectos, mi historial académico y cómo contactarme.">
+
+  <!-- Favicon inline (monograma TD) para no depender de archivos externos -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffb454'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='700' text-anchor='middle' fill='%231b1204'%3ETD%3C/text%3E%3C/svg%3E">
+
+  <!--
+    Inicialización del tema ANTES del primer render (evita el "flash" de tema incorrecto).
+    También marca <html> con la clase "js": el CSS la usa para aplicar animaciones de entrada
+    únicamente cuando JavaScript está disponible (sin JS, todo el contenido queda visible).
+  -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      var theme;
+      try { theme = localStorage.getItem('portfolio-theme'); } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      root.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <!-- Tipografías: Bricolage Grotesque (títulos) · DM Sans (texto) · JetBrains Mono (detalles de código) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
+
+  <!-- Estilos: base → componentes → secciones (el orden importa) -->
+  <link rel="stylesheet" href="assets/css/base/tokens.css">
+  <link rel="stylesheet" href="assets/css/base/reset.css">
+  <link rel="stylesheet" href="assets/css/base/typography.css">
+  <link rel="stylesheet" href="assets/css/base/layout.css">
+  <link rel="stylesheet" href="assets/css/components/icons.css">
+  <link rel="stylesheet" href="assets/css/components/buttons.css">
+  <link rel="stylesheet" href="assets/css/components/badges.css">
+  <link rel="stylesheet" href="assets/css/components/cards.css">
+  <link rel="stylesheet" href="assets/css/components/progress.css">
+  <link rel="stylesheet" href="assets/css/components/forms.css">
+  <link rel="stylesheet" href="assets/css/components/toast.css">
+  <link rel="stylesheet" href="assets/css/components/animations.css">
+  <link rel="stylesheet" href="assets/css/sections/header.css">
+  <link rel="stylesheet" href="assets/css/sections/hero.css">
+  <link rel="stylesheet" href="assets/css/sections/about.css">
+  <link rel="stylesheet" href="assets/css/sections/skills.css">
+  <link rel="stylesheet" href="assets/css/sections/education.css">
+  <link rel="stylesheet" href="assets/css/sections/projects.css">
+  <link rel="stylesheet" href="assets/css/sections/experience.css">
+  <link rel="stylesheet" href="assets/css/sections/contact.css">
+  <link rel="stylesheet" href="assets/css/sections/footer.css">
+  <link rel="stylesheet" href="assets/css/base/print.css" media="print">
+
+  <!-- Datos estructurados (SEO): ayuda a buscadores a entender que esta página es de una persona -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Thiago Da Graca",
+    "jobTitle": "Desarrollador Java Junior",
+    "email": "mailto:dagracathiago@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Lanús", "addressRegion": "Buenos Aires", "addressCountry": "AR" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidad Nacional de Lanús" },
+    "knowsAbout": ["Java", "Programación orientada a objetos", "MySQL", "C++", "Programación concurrente", "Git"],
+    "sameAs": [
+      "https://github.com/dagracathiago-hash",
+      "https://www.linkedin.com/in/thiago-da-graca"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!--
+    Sprite de íconos (estilo trazo). Se usan con: <svg class="icon"><use href="#i-nombre"/></svg>
+    Para agregar uno nuevo, sumá un <symbol id="i-nombre"> acá.
+  -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+    <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+    <symbol id="i-graduation-cap" viewBox="0 0 24 24"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></symbol>
+    <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-git-branch" viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ============================== HEADER ============================== -->
+  <header class="site-header" data-header>
+    <div class="container site-header__inner">
+      <a class="brand" href="#inicio" aria-label="Thiago Da Graca, ir al inicio">
+        <span class="brand__mark" aria-hidden="true">TD</span>
+        <span class="brand__name">Thiago Da Graca</span>
+      </a>
+
+      <nav class="nav" id="site-nav" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#sobre-mi" data-nav-link>Sobre mí</a></li>
+          <li><a class="nav__link" href="#habilidades" data-nav-link>Habilidades</a></li>
+          <li><a class="nav__link" href="#formacion" data-nav-link>Formación</a></li>
+          <li><a class="nav__link" href="#proyectos" data-nav-link>Proyectos</a></li>
+          <li><a class="nav__link" href="#experiencia" data-nav-link>Experiencia</a></li>
+          <li><a class="nav__link" href="#contacto" data-nav-link>Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <button class="btn btn--icon" type="button" data-theme-toggle aria-label="Cambiar tema">
+          <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+        <a class="btn btn--primary btn--sm site-header__cta" href="#contacto">Contactar</a>
+        <button class="btn btn--icon nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú">
+          <svg class="icon icon--open" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg class="icon icon--close" aria-hidden="true"><use href="#i-x"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <noscript>
+      <div class="noscript-banner">
+        Este portfolio usa JavaScript para mostrar mis materias, proyectos y experiencia.
+        Podés ver todo en mi <a href="assets/docs/Thiago_DaGraca_CV_ES.pdf">CV en PDF</a>
+        o escribirme a <a href="mailto:dagracathiago@gmail.com">dagracathiago@gmail.com</a>.
+      </div>
+    </noscript>
+
+    <!-- ============================== INICIO / HERO ============================== -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true"></div>
+
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="status-pill"><span class="status-pill__dot" aria-hidden="true"></span>Disponible para pasantías, trainee y posiciones junior</p>
+
+          <p class="hero__greeting">Hola, soy</p>
+          <h1 class="hero__title" id="hero-title">Thiago <span class="hero__title-accent">Da Graca</span></h1>
+          <p class="hero__role">Desarrollador Java Junior</p>
+
+          <p class="hero__lead">
+            Estudiante de tercer año de Licenciatura en Sistemas en la <strong>UNLa</strong>.
+            Me gusta el código ordenado: Java, programación orientada a objetos, bases de datos
+            y trabajo en equipo con Git. Busco mi primera experiencia profesional.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#proyectos">Ver proyectos
+              <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </a>
+            <a class="btn btn--secondary" href="assets/docs/Thiago_DaGraca_CV_ES.pdf" download>Descargar CV
+              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+            </a>
+          </div>
+
+          <ul class="hero__social" id="hero-social" aria-label="Mis redes"></ul>
+        </div>
+
+        <!-- Ventana de código decorativa (la arma js/components/hero-code.js con datos reales) -->
+        <div class="hero__visual" aria-hidden="true">
+          <div class="code-window">
+            <div class="code-window__bar">
+              <span class="code-window__dot code-window__dot--red"></span>
+              <span class="code-window__dot code-window__dot--yellow"></span>
+              <span class="code-window__dot code-window__dot--green"></span>
+              <span class="code-window__title">Thiago.java</span>
+            </div>
+            <pre class="code-window__body"><code id="hero-code"></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <ul class="stats" id="stats" aria-label="Datos clave"></ul>
+      </div>
+    </section>
+
+    <!-- ============================== SOBRE MÍ ============================== -->
+    <section class="section" id="sobre-mi" aria-labelledby="about-title">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="eyebrow">01 · Sobre mí</p>
+          <h2 class="section__title" id="about-title">Detrás del código</h2>
+        </header>
+
+        <div class="about__grid">
+          <div class="about__text" id="about-text"></div>
+          <aside class="about__card card" id="about-card" aria-label="Datos rápidos" data-reveal></aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== HABILIDADES ============================== -->
+    <section class="section section--alt" id="habilidades" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="eyebrow">02 · Habilidades</p>
+          <h2 class="section__title" id="skills-title">Con qué construyo</h2>
+          <p class="section__lead">Java es mi lenguaje principal. Lo complemento con bases de datos, concurrencia en C/C++ y las herramientas de trabajo en equipo que se usan en la industria.</p>
+        </header>
+
+        <div class="skills__grid" id="skills-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============================== FORMACIÓN ============================== -->
+    <section class="section" id="formacion" aria-labelledby="edu-title">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="eyebrow">03 · Formación académica</p>
+          <h2 class="section__title" id="edu-title">Una trayectoria sólida en la UNLa</h2>
+          <p class="section__lead">Datos tomados de mi historia académica oficial (SIU Guaraní). Podés explorar cada materia, filtrarla y ordenarla.</p>
+        </header>
+
+        <div class="edu__overview" id="edu-overview"></div>
+
+        <div class="subjects" id="subjects">
+          <div class="subjects__head" data-reveal>
+            <h3 class="subjects__title">Materias aprobadas</h3>
+            <p class="subjects__count" id="subject-count" aria-live="polite"></p>
+          </div>
+
+          <div class="subjects__toolbar" data-reveal>
+            <label class="field field--search">
+              <span class="sr-only">Buscar materia</span>
+              <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+              <input class="field__input" id="subject-search" type="search" placeholder="Buscar materia…" autocomplete="off">
+            </label>
+
+            <div class="segmented" role="group" aria-label="Filtrar por forma de aprobación">
+              <button class="segmented__btn is-active" type="button" data-subject-filter="all" aria-pressed="true">Todas</button>
+              <button class="segmented__btn" type="button" data-subject-filter="promocion" aria-pressed="false">Promoción</button>
+              <button class="segmented__btn" type="button" data-subject-filter="examen" aria-pressed="false">Examen final</button>
+            </div>
+
+            <label class="field field--select">
+              <span class="sr-only">Ordenar materias por</span>
+              <select class="field__input" id="subject-sort">
+                <option value="date-desc">Más recientes primero</option>
+                <option value="date-asc">Más antiguas primero</option>
+                <option value="grade-desc">Mayor nota primero</option>
+                <option value="name-asc">Nombre (A–Z)</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="table-wrap card" data-reveal>
+            <table class="subjects__table">
+              <caption class="sr-only">Materias aprobadas con fecha, forma de aprobación y nota</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Materia</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Aprobación</th>
+                  <th scope="col" class="subjects__th-grade">Nota</th>
+                </tr>
+              </thead>
+              <tbody id="subject-rows"></tbody>
+            </table>
+            <p class="subjects__empty" id="subject-empty" hidden>No encontré materias con ese criterio. Probá con otra búsqueda.</p>
+          </div>
+
+          <p class="subjects__source" id="subjects-source"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PROYECTOS ============================== -->
+    <section class="section section--alt" id="proyectos" aria-labelledby="projects-title">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="eyebrow">04 · Proyectos</p>
+          <h2 class="section__title" id="projects-title">Lo que construí hasta ahora</h2>
+          <p class="section__lead">Proyectos académicos con enfoque profesional: trabajo en equipo, control de versiones y decisiones de diseño.</p>
+        </header>
+
+        <div class="projects__grid" id="projects-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============================== EXPERIENCIA ============================== -->
+    <section class="section" id="experiencia" aria-labelledby="exp-title">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="eyebrow">05 · Experiencia laboral</p>
+          <h2 class="section__title" id="exp-title">Trabajo real, con personas reales</h2>
+          <p class="section__lead">Más de dos años de atención al público mientras estudiaba: responsabilidad, comunicación y cumplimiento de objetivos.</p>
+        </header>
+
+        <div class="experience__grid">
+          <ol class="timeline" id="timeline"></ol>
+          <aside class="card experience__skills" id="soft-skills" data-reveal></aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CONTACTO ============================== -->
+    <section class="section section--alt contact" id="contacto" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact__panel" data-reveal>
+          <div class="contact__intro">
+            <p class="eyebrow">06 · Contacto</p>
+            <h2 class="section__title" id="contact-title">¿Armamos algo juntos?</h2>
+            <p class="section__lead">
+              Estoy buscando mi primera experiencia como desarrollador junior, trainee o pasante.
+              Si tu equipo está sumando gente, me encantaría conversar.
+            </p>
+            <div class="contact__actions" id="contact-actions">
+              <a class="btn btn--secondary" href="assets/docs/Thiago_DaGraca_CV_ES.pdf" download>Descargar CV
+                <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <ul class="contact__list" id="contact-list"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>© <span id="year">2026</span> Thiago Da Graca · Hecho a mano con HTML, CSS y JavaScript</p>
+      <a class="site-footer__top" href="#inicio">Volver arriba
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Aviso flotante (lo usa features/clipboard.js) -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!--
+    Scripts: clásicos (no módulos ES) a propósito, así el sitio funciona también abriendo
+    index.html con doble click (file://), donde los módulos ES son bloqueados por el navegador.
+    El orden importa: core → datos → componentes → features → main.
+  -->
+  <script defer src="assets/js/core/namespace.js"></script>
+  <script defer src="assets/js/core/dom.js"></script>
+  <script defer src="assets/js/core/format.js"></script>
+
+  <script defer src="assets/js/data/profile.js"></script>
+  <script defer src="assets/js/data/education.js"></script>
+  <script defer src="assets/js/data/skills.js"></script>
+  <script defer src="assets/js/data/projects.js"></script>
+  <script defer src="assets/js/data/experience.js"></script>
+  <script defer src="assets/js/data/contact.js"></script>
+
+  <script defer src="assets/js/core/academic.js"></script>
+
+  <script defer src="assets/js/components/stats.js"></script>
+  <script defer src="assets/js/components/hero-code.js"></script>
+  <script defer src="assets/js/components/about.js"></script>
+  <script defer src="assets/js/components/skills.js"></script>
+  <script defer src="assets/js/components/education.js"></script>
+  <script defer src="assets/js/components/subjects.js"></script>
+  <script defer src="assets/js/components/projects.js"></script>
+  <script defer src="assets/js/components/experience.js"></script>
+  <script defer src="assets/js/components/contact.js"></script>
+
+  <script defer src="assets/js/features/theme.js"></script>
+  <script defer src="assets/js/features/nav.js"></script>
+  <script defer src="assets/js/features/reveal.js"></script>
+  <script defer src="assets/js/features/counters.js"></script>
+  <script defer src="assets/js/features/clipboard.js"></script>
+
+  <script defer src="assets/js/main.js"></script>
+</body>
+</html>

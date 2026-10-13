@@ -1,0 +1,126 @@
+/* ==========================================================================
+   EXPERIENCIA LABORAL: línea de tiempo + habilidades transversales
+   ========================================================================== */
+
+.experience__grid {
+  display: grid;
+  align-items: start;
+  gap: 1.5rem;
+}
+
+/* --- Línea de tiempo --- */
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 1.25rem;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  left: 7px;
+  width: 2px;
+  background: linear-gradient(var(--accent), var(--border) 85%);
+}
+
+.timeline__item {
+  position: relative;
+}
+
+.timeline__dot {
+  position: absolute;
+  top: 1.75rem;
+  left: -2rem;
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--bg);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.timeline__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 1.1rem;
+}
+
+.timeline__role {
+  font-size: var(--fs-xl);
+}
+
+.timeline__company {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.timeline__period {
+  display: grid;
+  justify-items: start;
+  gap: 0.35rem;
+}
+
+.timeline__duration {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.timeline__points {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.timeline__points li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--text-muted);
+}
+
+.timeline__points li::before {
+  content: '';
+  position: absolute;
+  top: 0.62em;
+  left: 0;
+  width: 0.55rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+/* --- Habilidades transversales --- */
+.experience__skills {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.experience__skills-title {
+  font-size: var(--fs-xl);
+}
+
+.experience__skills p {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+@media (min-width: 900px) {
+  .experience__grid {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .experience__skills {
+    position: sticky;
+    top: calc(var(--header-h) + 1.5rem);
+  }
+
+  .timeline__period {
+    justify-items: end;
+    text-align: right;
+  }
+}

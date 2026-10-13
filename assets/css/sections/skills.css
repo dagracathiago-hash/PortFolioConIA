@@ -1,0 +1,83 @@
+/* ==========================================================================
+   HABILIDADES
+   ========================================================================== */
+
+.skills__grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.skill-group {
+  display: grid;
+  align-content: start;
+  gap: 1.25rem;
+}
+
+.skill-group__head {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.skill-group__title {
+  font-size: var(--fs-xl);
+}
+
+.skill-group__desc {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  transition: border-color 0.2s, transform 0.2s var(--ease);
+}
+
+.skill-chip:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.skill-chip small {
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+}
+
+/* Habilidad principal (Java) */
+.skill-chip--primary {
+  border-color: transparent;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+}
+
+.skill-chip--primary small {
+  color: inherit;
+  opacity: 0.8;
+}
+
+.skill-chip--primary .icon {
+  width: 0.95em;
+  height: 0.95em;
+  fill: currentColor;
+}
+
+@media (min-width: 760px) {
+  .skills__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

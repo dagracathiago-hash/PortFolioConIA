@@ -1,0 +1,57 @@
+/* ==========================================================================
+   IMPRESIÓN: versión limpia por si alguien imprime o guarda la página como PDF
+   ========================================================================== */
+
+:root,
+:root[data-theme='dark'] {
+  --bg: #fff;
+  --bg-soft: #fff;
+  --surface: #fff;
+  --surface-2: #f3f3f3;
+  --border: #ccc;
+  --text: #000;
+  --text-muted: #333;
+  --accent: #8f4207;
+}
+
+.site-header,
+.hero__visual,
+.hero__bg,
+.hero__social,
+.toast,
+.skip-link,
+.subjects__toolbar,
+.site-footer__top,
+.contact__actions,
+.copy-btn {
+  display: none !important;
+}
+
+body {
+  font-size: 11pt;
+}
+
+.section {
+  padding-block: 1.5rem;
+  break-inside: avoid;
+}
+
+.hero {
+  padding-top: 1rem !important;
+}
+
+.js [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.progress__fill,
+.meter__fill {
+  width: var(--value) !important;
+}
+
+a[href^='http']::after {
+  content: ' (' attr(href) ')';
+  font-size: 9pt;
+  color: #555;
+}

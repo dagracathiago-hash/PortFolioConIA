@@ -1,0 +1,405 @@
+/* ==========================================================================
+   FORMACIÓN ACADÉMICA
+   Incluye: tarjeta de universidad, promedio (anillo + distribución de notas)
+   y la tabla interactiva de materias.
+   ========================================================================== */
+
+/* --- Resumen --- */
+.edu__overview {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+
+/* Tarjeta de universidad */
+.uni-card {
+  display: grid;
+  align-content: start;
+  gap: 1.5rem;
+}
+
+.uni-card__head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.uni-card__title {
+  font-size: var(--fs-xl);
+}
+
+.uni-card__program {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+.uni-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.uni-card__progress {
+  display: grid;
+  gap: 1.35rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.uni-card__note {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+/* Tarjeta de promedio */
+.gpa-card {
+  display: grid;
+  align-content: start;
+  gap: 1.75rem;
+}
+
+.gpa-card__top {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ring {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  flex: none;
+}
+
+.ring svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ring__track {
+  fill: none;
+  stroke: var(--surface-2);
+  stroke-width: 9;
+}
+
+.ring__value {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 9;
+  stroke-linecap: round;
+  stroke-dasharray: 339.292;
+  stroke-dashoffset: var(--offset);
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.js .ring__value {
+  stroke-dashoffset: 339.292;
+  transition: stroke-dashoffset 1.6s var(--ease) 0.2s;
+}
+
+.js .is-visible .ring__value {
+  stroke-dashoffset: var(--offset);
+}
+
+.ring__center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  line-height: 1;
+}
+
+.ring__number {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.ring__max {
+  margin-top: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.gpa-card__title {
+  font-size: var(--fs-xl);
+}
+
+.gpa-card__legend {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.gpa-card__legend p {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+
+.gpa-card__legend strong {
+  color: var(--text);
+}
+
+.gpa-card__dist-title,
+.gpa-card__tens-title {
+  margin-bottom: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* Gráfico de distribución de notas */
+.meter {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.meter__row {
+  display: grid;
+  grid-template-columns: 1.8rem 1fr 1.8rem;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+}
+
+.meter__label {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.meter__track {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--surface-2);
+}
+
+.meter__fill {
+  display: block;
+  width: var(--value);
+  height: 100%;
+  border-radius: inherit;
+  background: var(--teal);
+}
+
+.meter__row[data-top] .meter__fill {
+  background: var(--accent);
+}
+
+.js .meter__fill {
+  width: 0;
+  transition: width 1s var(--ease) 0.3s;
+}
+
+.js .is-visible .meter__fill {
+  width: var(--value);
+}
+
+.meter__count {
+  text-align: right;
+  color: var(--text-muted);
+}
+
+/* --- Materias --- */
+.subjects__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.subjects__title {
+  font-size: var(--fs-xl);
+}
+
+.subjects__count {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.subjects__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.subjects__toolbar .field--search {
+  flex: 1 1 240px;
+}
+
+.subjects__toolbar .field--select {
+  flex: 0 1 220px;
+}
+
+.table-wrap {
+  padding: 0;
+  overflow: hidden;
+}
+
+.subjects__table th {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.subjects__th-grade,
+.subjects__grade-cell {
+  text-align: right !important;
+}
+
+.subjects__table td {
+  padding: 0.95rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--fs-sm);
+  vertical-align: middle;
+}
+
+.subjects__table tbody tr {
+  transition: background-color 0.2s;
+}
+
+.subjects__table tbody tr:hover {
+  background: var(--surface-2);
+}
+
+.subjects__table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.subject-name {
+  display: block;
+  font-weight: 700;
+  font-size: var(--fs-md);
+  line-height: 1.35;
+}
+
+.subject-code {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-faint);
+}
+
+.subjects__date {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Nota: el color depende del rango */
+.grade {
+  display: inline-grid;
+  min-width: 2.6rem;
+  height: 2.1rem;
+  place-items: center;
+  padding-inline: 0.5rem;
+  border-radius: 9px;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-md);
+  font-weight: 700;
+}
+
+.grade[data-tier='perfect'] {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.grade[data-tier='high'] {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.grade[data-tier='good'] {
+  background: var(--teal-soft);
+  color: var(--teal);
+}
+
+.subjects__empty {
+  padding: 2rem 1.25rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.subjects__source {
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-faint);
+}
+
+/* --- Tablet / escritorio --- */
+@media (min-width: 900px) {
+  .edu__overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- Móvil: la tabla pasa a "tarjetas" por fila --- */
+@media (max-width: 720px) {
+  .subjects__table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .subjects__table,
+  .subjects__table tbody {
+    display: block;
+  }
+
+  .subjects__table tbody tr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 0.75rem;
+    padding: 1rem 1.15rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .subjects__table tbody tr:last-child {
+    border-bottom: 0;
+  }
+
+  .subjects__table td {
+    display: block;
+    padding: 0;
+    border: 0;
+  }
+
+  .subjects__table .subjects__name {
+    flex: 1 1 calc(100% - 4rem);
+    order: 1;
+  }
+
+  .subjects__table .subjects__grade-cell {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .subjects__table .subjects__date,
+  .subjects__table .subjects__type {
+    order: 3;
+    font-size: var(--fs-xs);
+  }
+}

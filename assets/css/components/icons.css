@@ -1,0 +1,14 @@
+/* ==========================================================================
+   ÍCONOS (sprite SVG inline). El tamaño sigue al font-size del contenedor.
+   ========================================================================== */
+
+.icon {
+  width: 1.25em;
+  height: 1.25em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

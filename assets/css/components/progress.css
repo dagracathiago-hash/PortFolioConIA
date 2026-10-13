@@ -1,0 +1,60 @@
+/* ==========================================================================
+   BARRAS DE PROGRESO
+   Uso: <div class="progress" style="--value: 45%"> … </div>
+   El relleno se anima cuando el ancestro recibe .is-visible (ver reveal.js).
+   ========================================================================== */
+
+.progress {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.progress__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: var(--fs-sm);
+}
+
+.progress__label {
+  font-weight: 700;
+}
+
+.progress__sub {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.progress__value {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.progress__track {
+  height: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+}
+
+.progress__fill {
+  display: block;
+  width: var(--value);
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+}
+
+.js .progress__fill {
+  width: 0;
+  transition: width 1.3s var(--ease) 0.25s;
+}
+
+.js .is-visible .progress__fill {
+  width: var(--value);
+}
